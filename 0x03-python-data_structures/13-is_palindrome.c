@@ -7,44 +7,33 @@
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *slow = *head, *fast = *head;
-	listint_t *second_half, *prev = *head, *temp = NULL;
-	int is_palindrome = 1;
+	listint_t *slow = *head;
+	listint_t *fast = *head;
+	listint_t *prev = NULL;
+	listint_t *temp;
 
-	if (*head == NULL || (*head)->next == NULL)
+	if (*head == NULL)
 		return (1);
 
-	while (fast != NULL && fast->next != NULL)
+	while (fast && fast->next)
 	{
 		fast = fast->next->next;
+		temp = slow->next;
+		slow->next = prev;
 		prev = slow;
-		slow = slow->next;
+		slow = temp;
 	}
 
-	if (fast != NULL)
+	if (fast)
 		slow = slow->next;
 
-	second_half = slow;
-	prev->next = NULL;
-
-	while (second_half != NULL)
+	while (prev && slow)
 	{
-		temp = second_half->next;
-		second_half->next = prev;
-		prev = second_half;
-		second_half = temp;
-	}
-
-	temp = *head;
-	while (prev != NULL)
-	{
-		if (temp->n != prev->n)
-		{
-			is_palindrome = 0;
-			break;
-		}
-		temp = temp->next;
+		if (prev->n != slow->n)
+			return (0);
 		prev = prev->next;
+		slow = slow->next;
 	}
-	return (is_palindrome);
+
+	return (1);
 }

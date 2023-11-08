@@ -16,6 +16,7 @@ void print_python_list(PyObject *p)
 	for (Py_ssize_t i = 0; i < size; i++)
 	{
 		PyObject *element = PyList_GetItem(p, i);
+
 		printf("Element %ld: %s\n", i, Py_TYPE(element)->tp_name);
 	}
 }
@@ -33,11 +34,13 @@ void print_python_bytes(PyObject *p)
 
 	printf("[.] bytes object info\n");
 	printf("  size: %ld\n", size);
-	printf("  trying string: %s\n", PyUnicode_Decode_ASCII(PyBytes_AsString(p), size, "strict"));
+	printf("  trying string: %s\n",
+	PyUnicode_Decode_ASCII(PyBytes_AsString(p), size, "strict"));
 
 	printf("  first %ld bytes: ", (size < 10) ? size : 10);
 	for (Py_ssize_t i = 0; i < ((size < 10) ? size : 10); i++)
 	{
-		printf("%02x%s", (unsigned char)PyBytes_AsString(p)[i], (i == 9) ? "\n" : " ");
+		printf("%02x%s",
+		(unsigned char)PyBytes_AsString(p)[i], (i == 9) ? "\n" : " ");
 	}
 }

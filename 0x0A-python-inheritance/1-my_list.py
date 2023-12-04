@@ -3,12 +3,8 @@
 
 
 class MyList(list):
-    """a subclass of list"""
-
-    def __init__(self):
-        """initializes the object MyList"""
-        super().__init__()
+    """Sub Class for Build in List."""
 
     def print_sorted(self):
-        """prints the sorted list"""
+        """Print a list in sorted ascending order."""
         print(sorted(self))

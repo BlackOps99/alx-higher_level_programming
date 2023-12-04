@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Defines an Class Named MyList"""
+"""Defines an Class Named BaseGeometry"""
 
 
 class BaseGeometry:

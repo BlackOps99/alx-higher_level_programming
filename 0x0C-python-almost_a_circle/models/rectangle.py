@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Defines a base class."""
-from models.base import Base
+Base = __import__('base').Base
 
 
 class Rectangle(Base):
@@ -53,12 +53,11 @@ class Rectangle(Base):
 
     @property
     def height(self):
-        """get the height of the Rectangle."""
+        """Set/get the height of the Rectangle."""
         return self.__height
 
     @height.setter
     def height(self, value):
-        """set the height of the Rectangle."""
         if type(value) != int:
             raise TypeError("height must be an integer")
         if value <= 0:
@@ -67,28 +66,26 @@ class Rectangle(Base):
 
     @property
     def x(self):
-        """get the coordinate x of the Rectangle."""
+        """Set/get the x coordinate of the Rectangle."""
         return self.__x
 
     @x.setter
     def x(self, value):
-        """set the coordinate x of the Rectangle."""
         if type(value) != int:
             raise TypeError("x must be an integer")
-        if value <= 0:
-            raise ValueError("x must be > 0")
+        if value < 0:
+            raise ValueError("x must be >= 0")
         self.__x = value
 
     @property
     def y(self):
-        """get the coordinate y of the Rectangle."""
+        """Set/get the y coordinate of the Rectangle."""
         return self.__y
 
     @y.setter
     def y(self, value):
-        """set the coordinate y of the Rectangle."""
         if type(value) != int:
             raise TypeError("y must be an integer")
-        if value <= 0:
-            raise ValueError("y must be > 0")
+        if value < 0:
+            raise ValueError("y must be >= 0")
         self.__y = value

@@ -2,6 +2,7 @@
 """Defines a base class."""
 import json
 
+
 class Base:
     """Base Parent.
 
@@ -24,7 +25,7 @@ class Base:
         else:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
-            
+
     @staticmethod
     def to_json_string(list_dictionaries):
         """Return the JSON serialization of a list of dicts.

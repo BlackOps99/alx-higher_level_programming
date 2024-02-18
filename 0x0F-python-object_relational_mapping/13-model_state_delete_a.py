@@ -19,5 +19,7 @@ if __name__ == "__main__":
 
     for state in states:
         Session.delete(state)
+    
+    Session.commit()
 
     Session.close()

@@ -13,8 +13,10 @@ if __name__ == '__main__':
                 INNER JOIN states s ON c.state_id = s.id\
                 WHERE s.name = %s", [argv[4]])
 
+    cities = []
     for i in cur.fetchall():
-        print(i)
+        cities.append(i[1])
+    print(", ".join(cities))
 
     cur.close()
     db.close()
